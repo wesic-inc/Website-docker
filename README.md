@@ -5,4 +5,4 @@
 - docker-compose build
 - docker-compose run
 
-Go to : http://192.168.99.100:1992
+Go to : http://192.168.99.100:1992 or http://localhost:1992/
