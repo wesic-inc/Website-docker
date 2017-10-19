@@ -6,16 +6,26 @@ services:
         environment:
          - MYSQL_ROOT_PASSWORD=mypass
 
+#    php:
+#        image: php:7.0-apache
+#        container_name: wesic-httpd
+#        working_dir: /
+#        links:
+#         - mariadb:db
+#        ports:
+#         - "80:80"
+#        volumes:
+#         - ./src:/var/www/html/
     php:
-        image: php:7.0-apache
-        container_name: wesic-httpd
-        working_dir: /
+        build:
+          context: ./
+          dockerfile: Dockerfile
+        volumes:
+          - ./src:/var/www/html/
         links:
          - mariadb:db
         ports:
-         - "80:80"
-        volumes:
-         - ./src:/var/www/html/
+          - "8080:80"
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
