@@ -1,0 +1,28 @@
+version: "2.0"
+services:
+    mariadb:
+        image: mariadb
+        container_name: wesic-mariadb
+        environment:
+         - MYSQL_ROOT_PASSWORD=mypass
+
+    httpd:
+        image: httpd
+        container_name: wesic-httpd
+        working_dir: /
+        links:
+         - mariadb:db
+        ports:
+         - "80:80"
+        volumes:
+         - ./src/:/var/www/html/
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: wesic-phpmyadmin
+        environment:
+         - MYSQL_ROOT_PASSWORD=mypass
+        ports:
+         - "8082:80"
+        links:
+         - mariadb:db
