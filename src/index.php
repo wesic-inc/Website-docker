@@ -1,7 +1,7 @@
 <?php 
 
 
-echo "Bonjour Cyrille Grandval <b>"
+echo "Bonjour Cyrille Grandval <b>";
 
 $date = date("d/m/Y");
 $heure = date("H:i");
