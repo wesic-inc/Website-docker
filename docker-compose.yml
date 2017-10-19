@@ -6,8 +6,8 @@ services:
         environment:
          - MYSQL_ROOT_PASSWORD=mypass
 
-    httpd:
-        image: httpd
+    php:
+        image: php:7.0-apache
         container_name: wesic-httpd
         working_dir: /
         links:
@@ -15,7 +15,7 @@ services:
         ports:
          - "80:80"
         volumes:
-         - ./src/:/var/www/html/
+         - ./src:/var/www/html/
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
